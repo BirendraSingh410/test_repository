@@ -1,10 +1,10 @@
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
-from mycode.security import authenticate, identity
-from mycode.resources.user import UserRegister
-from mycode.resources.item import Item, ItemList
-from mycode.resources.store import Store, StoreList
+from security import authenticate, identity
+from resources.user import UserRegister
+from resources.item import Item, ItemList
+from resources.store import Store, StoreList
 
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
@@ -28,6 +28,6 @@ api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
-    from mycode.db import db
+    from db import db
     db.init_app(app)
     app.run(debug=True, port=5000)
