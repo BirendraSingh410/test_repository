@@ -1,6 +1,5 @@
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 from models.store import StoreModel
-
 
 class Store(Resource):
     def get(self, name):
@@ -28,7 +27,6 @@ class Store(Resource):
 
         return {'message': 'Store deleted'}
 
-
 class StoreList(Resource):
     def get(self):
-        return {'stores': [x.json() for x in StoreModel.find_all()]}
+        return {'stores': [store.json() for store in StoreModel.query.all()]}
