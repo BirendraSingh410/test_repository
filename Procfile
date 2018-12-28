@@ -1,0 +1,1 @@
+web: uwgsi uwgsi.ini
